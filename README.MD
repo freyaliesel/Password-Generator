@@ -13,7 +13,7 @@ Assignment is to modify the provided starter code and make an application that g
 >
 >
 > ### Acceptance Criteria
->       GIVEN I need a new, secure password
+>      GIVEN I need a new, secure password
 >      WHEN I click the button to generate a password
 >      THEN I am presented with a series of prompts for password criteria
 >      WHEN prompted for password criteria
@@ -28,3 +28,6 @@ Assignment is to modify the provided starter code and make an application that g
 >      THEN a password is generated that matches the selected criteria
 >      WHEN the password is generated
 >      THEN the password is either displayed in an alert or written to the page
+
+
+Link to the repo is located at [github.com/freyaliesel/Password-Generator](https://github.com/freyaliesel/Password-Generator "GitHub")
