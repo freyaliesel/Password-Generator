@@ -13,7 +13,7 @@ Assignment is to modify the provided starter code and make an application that g
 >
 >
 > ### Acceptance Criteria
->       GIVEN I need a new, secure password
+>      GIVEN I need a new, secure password
 >      WHEN I click the button to generate a password
 >      THEN I am presented with a series of prompts for password criteria
 >      WHEN prompted for password criteria
