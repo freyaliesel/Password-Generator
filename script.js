@@ -11,7 +11,7 @@ function generatePassword() {
     console.log(`User selected: password length ${passwordLength}`);
 
     // check to make sure user selects a valid password length
-    if (passwordLength < 7 || passwordLength > 129) {
+    if (passwordLength < 7 || passwordLength > 128) {
         alert(`Password must be between 8 and 128 characters`);
         console.log(`Password must be between 8 and 128 characters`);
         return;
@@ -38,7 +38,7 @@ function generatePassword() {
         return;
     }
 
-    // Make arrays for the possible character types
+    // Declare arrays for the possible character types
     const alphaUpper = [
         "A",
         "B",
@@ -136,7 +136,7 @@ function generatePassword() {
     // Make an array to put the password in
     var password = new Array();
 
-    // as long as the array is shorter than the password, it will populate with characters from the users selected characters
+    // While the array is shorter than the password, populate with characters from the selected criteria
     while (password.length < passwordLength) {
         if (includeUpper && password.length < passwordLength) {
             password.push(
@@ -161,7 +161,7 @@ function generatePassword() {
     }
 console.log(password);
 
-    // Randomize the password contents
+    // Randomize the password order
     for (i = password.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * i);
         var k = password[i];
