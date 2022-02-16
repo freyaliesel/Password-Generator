@@ -55,11 +55,11 @@ header {
     min-height: 100px;
 }
 
-form {
+.card form {
   margin: 20px, 0;
 }
 
-form::after {
+.card form::after {
     content: " ";
     display: block;
     width: 100%;
@@ -100,6 +100,14 @@ form::after {
     padding: 14px 34px;
     text-align: center;
     cursor: pointer;
+}
+
+.btn:hover, .btn:focus {
+    opacity: 0.8;
+}
+
+.btn:active {
+    transform: scale(.95);
 }
 
 button[disabled] {
