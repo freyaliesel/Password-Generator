@@ -31,6 +31,13 @@ function generatePassword() {
     var includeSpecial = confirm(`Include special characters?`);
     console.log(`User selected: special ${includeSpecial}`);
 
+    // Check that user selected at least one valid character type
+    if (!includeUpper && !includeLower && !includeNumeric && !includeSpecial) {
+        alert(`User must select at least one character type.`);
+        console.log(`User must select at least one character type.`);
+        return;
+    }
+
     // Make arrays for the possible character types
     const alphaUpper = [
         "A",
@@ -125,41 +132,45 @@ function generatePassword() {
         "~",
     ];
 
-    // Populate password array with random characters
+    // Populate password array with random characters while making sure that each type of character is represented
     // Make an array to put the password in
-    var password = new Array(passwordLength);
-    
-    // Generate character array based on options user selected
-    var characters = new Array();
-    
-    if (includeUpper) {
-        characters = alphaUpper;
-}
-    if (includeLower) {
-        characters = characters.concat(alphaLower);
+    var password = new Array();
+
+    // as long as the array is shorter than the password, it will populate with characters from the users selected characters
+    while (password.length < passwordLength) {
+        if (includeUpper && password.length < passwordLength) {
+            password.push(
+                alphaUpper[Math.floor(Math.random() * alphaUpper.length)]
+            );
+        }
+        if (includeLower) {
+            password.push(
+                alphaLower[Math.floor(Math.random() * alphaLower.length)]
+            );
+        }
+        if (includeNumeric) {
+            password.push(
+                charNumeric[Math.floor(Math.random() * charNumeric.length)]
+            );
+        }
+        if (includeSpecial) {
+            password.push(
+                charSpecial[Math.floor(Math.random() * charSpecial.length)]
+            );
+        }
     }
-    if (includeNumeric) {
-        characters = characters.concat(charNumeric);
-    }
-    if (includeSpecial) {
-        characters = characters.concat(charSpecial);
-    }
-    // Check that user selected at least one valid character type
-    if (!includeUpper && !includeLower && !includeNumeric && !includeSpecial) {
-        alert(`User must select at least one character type.`);
-        console.log(`User must select at least one character type.`);
-        return;
+console.log(password);
+
+    // Randomize the password contents
+    for (i = password.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * i);
+        var k = password[i];
+        password[i] = password[j];
+        password [j] = k;
     }
 
-    // Need to make sure there is at least one of each type of selected character in the generated password
-    // Randum number generation for each spot in the password
-    for (i = 0; i < passwordLength; i++) {
-        password[i] = characters[Math.floor(Math.random() * characters.length)];
-    }
     console.log(password);
 
-
-    
     return password.join("");
 }
 
