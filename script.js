@@ -23,17 +23,11 @@ function generatePassword() {
         return;
     }
 
-    // Password Length: at least 8 no more than 128
-    // THIS IS WHERE WE ARE WORKING NOW
+    // Get desired password length
     var passwordLength = document.getElementById("passwordLength").value;
     console.log(passwordLength);
 
-    // do I need to run a check to see if there is anything there first--
-    // -- and then if true, check to see if it meets the requirements?
-
-    // ABOVE HERE DOESNT WORK
-
-    // check to make sure user selects a valid password length
+    // Check to make sure user selects a valid password length
     if (passwordLength < 7 || passwordLength > 128) {
         alert(`Password must be between 8 and 128 characters`);
         console.log(`Password must be between 8 and 128 characters`);
@@ -183,8 +177,6 @@ function writePassword() {
 
     passwordText.value = password;
 }
-
-// Maybe I need to add an additional event listener to send the data in the password length field
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
