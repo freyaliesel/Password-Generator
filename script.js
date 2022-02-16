@@ -1,40 +1,42 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// TEST OUTSIDE FUNCTION HERE
+
+// END TESTING ZONE
+
 // Make "generatePassword" function
 function generatePassword() {
-    confirm(`Follow the prompts to establish your password criteria.`);
+    // Establish user password criteria
 
-    // Prompt user for password criteria
-    // Password Length: at least 8 no more than 128
-    let passwordLength = prompt(`Enter a password length between 8 and 128`);
-    console.log(`User selected: password length ${passwordLength}`);
-
-    // check to make sure user selects a valid password length
-    if (passwordLength < 7 || passwordLength > 128) {
-        alert(`Password must be between 8 and 128 characters`);
-        console.log(`Password must be between 8 and 128 characters`);
-        return;
-    }
-
-    // Character types:
-    // Uppercase
-    var includeUpper = confirm(`Include upper case letters?`);
-    console.log(`User selected: upper case ${includeUpper}`);
+    // WORKING HERE
+    var includeUpper = document.getElementById("includeUpper").checked;
+    console.log(includeUpper);
     // lowercase
-    var includeLower = confirm(`Include lower case letters?`);
+    var includeLower = document.getElementById("includeLower").checked;
     console.log(`User selected: lower case ${includeLower}`);
     // Numeric
-    var includeNumeric = confirm(`Include numeric characters?`);
+    var includeNumeric = document.getElementById("includeNumeric").checked;
     console.log(`User selected: numeric ${includeNumeric}`);
     // Special characters
-    var includeSpecial = confirm(`Include special characters?`);
+    var includeSpecial = document.getElementById("includeSpecial").checked;
     console.log(`User selected: special ${includeSpecial}`);
 
     // Check that user selected at least one valid character type
     if (!includeUpper && !includeLower && !includeNumeric && !includeSpecial) {
         alert(`User must select at least one character type.`);
         console.log(`User must select at least one character type.`);
+        return;
+    }
+
+    // Password Length: at least 8 no more than 128
+    var passwordLength = document.getElementById("passwordLength").textContent;
+    console.log(passwordLength);
+
+    // check to make sure user selects a valid password length
+    if (passwordLength < 7 || passwordLength > 128) {
+        alert(`Password must be between 8 and 128 characters`);
+        console.log(`Password must be between 8 and 128 characters`);
         return;
     }
 
@@ -159,14 +161,14 @@ function generatePassword() {
             );
         }
     }
-console.log(password);
+    console.log(password);
 
     // Randomize the password order
     for (i = password.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * i);
         var k = password[i];
         password[i] = password[j];
-        password [j] = k;
+        password[j] = k;
     }
 
     console.log(password);
@@ -181,6 +183,8 @@ function writePassword() {
 
     passwordText.value = password;
 }
+
+// I want the program to listen to see if the checkboxes are ticked before running
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
