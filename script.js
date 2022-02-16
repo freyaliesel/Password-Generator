@@ -1,10 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// TEST OUTSIDE FUNCTION HERE
-
-// END TESTING ZONE
-
 // Make "generatePassword" function
 function generatePassword() {
     // Establish user password criteria
@@ -29,7 +25,7 @@ function generatePassword() {
 
     // Password Length: at least 8 no more than 128
     // THIS IS WHERE WE ARE WORKING NOW
-    var passwordLength = document.getElementById("passwordLength").textContent;
+    var passwordLength = document.getElementById("passwordLength").value;
     console.log(passwordLength);
 
     // do I need to run a check to see if there is anything there first--
