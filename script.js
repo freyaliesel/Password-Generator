@@ -130,53 +130,44 @@ function generatePassword() {
     // Make an array to put the password in
     var password = new Array();
 
+    // Variable to track how many criteria the user selected
     var criteria = 0;
-    // Put at least one of each type into the password array.
+
+    // Array for fill characters
+    var characters = new Array();
+
+    // Put at least one of each type selected into the password array.
     if (includeUpper && password.length < passwordLength) {
         password.push(
             alphaUpper[Math.floor(Math.random() * alphaUpper.length)]
         );
+        characters = alphaUpper;
         criteria++;
     }
     if (includeLower) {
         password.push(
             alphaLower[Math.floor(Math.random() * alphaLower.length)]
         );
+        characters = characters.concat(alphaLower);
         criteria++;
     }
     if (includeNumeric) {
         password.push(
             charNumeric[Math.floor(Math.random() * charNumeric.length)]
         );
+        characters = characters.concat(charNumeric);
         criteria++;
     }
     if (includeSpecial) {
         password.push(
             charSpecial[Math.floor(Math.random() * charSpecial.length)]
         );
+        characters = characters.concat(charSpecial);
         criteria++;
     }
-    console.log(password);
-    console.log(criteria);
+    console.log(`User selected ${criteria} password criteria.`);
 
     // Fill out the rest of the password array with randomized characters from the selected arrays
-
-    // Generate character array based on options user selected
-    var characters = new Array();
-
-    if (includeUpper) {
-        characters = alphaUpper;
-    }
-    if (includeLower) {
-        characters = characters.concat(alphaLower);
-    }
-    if (includeNumeric) {
-        characters = characters.concat(charNumeric);
-    }
-    if (includeSpecial) {
-        characters = characters.concat(charSpecial);
-    }
-    console.log(characters);
 
     // Randomize the character array
     for (i = characters.length - 1; i > 0; i--) {
@@ -201,7 +192,7 @@ function generatePassword() {
         password[j] = k;
     }
 
-    console.log(password);
+    console.log(`User's randomly generated password is: ${password.join("")}`);
 
     return password.join("");
 }
