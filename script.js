@@ -88,7 +88,7 @@ function generatePassword() {
         "y",
         "z",
     ];
-    const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    const charNumeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     const charSpecial = [
         " ",
         "!",
@@ -127,99 +127,25 @@ function generatePassword() {
 
     var characters = new Array();
 
-    // Generate character array based on options user selected, starting with edge cases
-    // User selects all options
-    if (includeUpper && includeLower && includeNumeric && includeSpecial) {
-        characters = alphaUpper.concat(alphaLower, numbers, charSpecial);
+    // Generate character array based on options user selected
+    if (includeUpper) {
+        characters = alphaUpper;
         console.log(characters);
     }
-    // Upper inclusive options
-    else if (
-        includeUpper &&
-        includeLower &&
-        includeNumeric &&
-        !includeSpecial
-    ) {
-        characters = alphaUpper.concat(alphaLower, numbers);
-        console.log(characters);
-    } else if (
-        includeUpper &&
-        includeLower &&
-        !includeNumeric &&
-        !includeSpecial
-    ) {
-        characters = alphaUpper.concat(alphaLower);
-        console.log(characters);
-    } else if (
-        includeUpper &&
-        !includeLower &&
-        !includeNumeric &&
-        !includeSpecial
-    ) {
-        for (i = 0; i < alphaUpper.length; i++) {
-            characters[i] = alphaUpper[i];
-        }
+    if (includeLower) {
+        characters = characters.concat(alphaLower);
         console.log(characters);
     }
-    // Lower inclusive options, no upper
-    else if (
-        includeLower &&
-        includeNumeric &&
-        includeSpecial &&
-        !includeUpper
-    ) {
-        characters = alphaLower.concat(numbers, charSpecial);
-        console.log(characters);
-    } else if (
-        includeLower &&
-        includeNumeric &&
-        !includeSpecial &&
-        !includeUpper
-    ) {
-        characters = alphaLower.concat(numbers);
-        console.log(characters);
-    } else if (
-        includeLower &&
-        !includeNumeric &&
-        includeSpecial &&
-        !includeUpper
-    ) {
-        for (i = 0; i < alphaLower.length; i++) {
-            characters[i] = alphaLower[i];
-        }
+    if (includeNumeric) {
+        characters = characters.concat(charNumeric);
         console.log(characters);
     }
-    // Numeric inclusive options, no alphabet
-    else if (
-        includeNumeric &&
-        includeSpecial &&
-        !includeUpper &&
-        !includeLower
-    ) {
-        characters = numbers.concat(includeSpecial);
+    if (includeSpecial) {
+        characters = characters.concat(charSpecial);
         console.log(characters);
-    } else if (
-        includeNumeric &&
-        !includeSpecial &&
-        !includeUpper &&
-        !includeLower
-    ) {
-        for (i = 0; i < numbers.length; i++) {
-            characters[i] = numbers[i];
-        }
-        console.log(characters);
-    } else if (
-        includeSpecial &&
-        !includeUpper &&
-        !includeLower &&
-        !includeNumeric
-    ) {
-        for (i = 0; i < charSpecial.length; i++) {
-            characters[i] = charSpecial[i];
-        }
     }
     // Check that user selected at least one valid character type
-    else {
+    if (!includeUpper && !includeLower && !includeNumeric && !includeSpecial) {
         alert(`User must select at least one character type.`);
         console.log(`User must select at least one character type.`);
         return;
@@ -228,6 +154,8 @@ function generatePassword() {
     // Populate password array with random characters
     // Make an array to put the password in
     var password = new Array(passwordLength);
+
+    // Need to make sure there is at least one of each type of selected character in the generated password
 
     // Randum number generation for each spot in the password
     for (i = 0; i < passwordLength; i++) {
