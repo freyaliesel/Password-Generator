@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
     // Establish user password criteria
     var includeUpper = document.getElementById("includeUpper").checked;
-    console.log(includeUpper);
+    console.log(`User selected: lower case ${includeUpper}`);
     // lowercase
     var includeLower = document.getElementById("includeLower").checked;
     console.log(`User selected: lower case ${includeLower}`);
@@ -18,20 +18,18 @@ function generatePassword() {
 
     // Check that user selected at least one valid character type
     if (!includeUpper && !includeLower && !includeNumeric && !includeSpecial) {
-        alert(`User must select at least one character type.`);
         console.log(`User must select at least one character type.`);
-        return;
+        return "Select at least one character type";
     }
 
     // Get desired password length
     var passwordLength = document.getElementById("passwordLength").value;
-    console.log(passwordLength);
+    console.log(`User entered: ${passwordLength} as password length.`);
 
     // Check to make sure user selects a valid password length
     if (passwordLength < 7 || passwordLength > 128) {
-        alert(`Password must be between 8 and 128 characters`);
         console.log(`Password must be between 8 and 128 characters`);
-        return;
+        return "Password must be between 8 and 128 characters";
     }
 
     // Declare arrays for the possible character types
@@ -132,30 +130,68 @@ function generatePassword() {
     // Make an array to put the password in
     var password = new Array();
 
-    // While the array is shorter than the password, populate with characters from the selected criteria
-    while (password.length < passwordLength) {
-        if (includeUpper && password.length < passwordLength) {
-            password.push(
-                alphaUpper[Math.floor(Math.random() * alphaUpper.length)]
-            );
-        }
-        if (includeLower) {
-            password.push(
-                alphaLower[Math.floor(Math.random() * alphaLower.length)]
-            );
-        }
-        if (includeNumeric) {
-            password.push(
-                charNumeric[Math.floor(Math.random() * charNumeric.length)]
-            );
-        }
-        if (includeSpecial) {
-            password.push(
-                charSpecial[Math.floor(Math.random() * charSpecial.length)]
-            );
-        }
+    var criteria = 0;
+    // Put at least one of each type into the password array.
+    if (includeUpper && password.length < passwordLength) {
+        password.push(
+            alphaUpper[Math.floor(Math.random() * alphaUpper.length)]
+        );
+        criteria++;
+    }
+    if (includeLower) {
+        password.push(
+            alphaLower[Math.floor(Math.random() * alphaLower.length)]
+        );
+        criteria++;
+    }
+    if (includeNumeric) {
+        password.push(
+            charNumeric[Math.floor(Math.random() * charNumeric.length)]
+        );
+        criteria++;
+    }
+    if (includeSpecial) {
+        password.push(
+            charSpecial[Math.floor(Math.random() * charSpecial.length)]
+        );
+        criteria++;
     }
     console.log(password);
+    console.log(criteria);
+
+    // Fill out the rest of the password array with randomized characters from the selected arrays
+
+    // Generate character array based on options user selected
+    var characters = new Array();
+
+    if (includeUpper) {
+        characters = alphaUpper;
+    }
+    if (includeLower) {
+        characters = characters.concat(alphaLower);
+    }
+    if (includeNumeric) {
+        characters = characters.concat(charNumeric);
+    }
+    if (includeSpecial) {
+        characters = characters.concat(charSpecial);
+    }
+    console.log(characters);
+
+    // Randomize the character array
+    for (i = characters.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * i);
+        var k = characters[i];
+        characters[i] = characters[j];
+        characters[j] = k;
+    }
+
+    // Populate the rest of the password
+    for (i = criteria; i < passwordLength; i++) {
+        password.push(
+            characters[Math.floor(Math.random() * characters.length)]
+        );
+    }
 
     // Randomize the password order
     for (i = password.length - 1; i > 0; i--) {
