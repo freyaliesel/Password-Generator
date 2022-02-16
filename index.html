@@ -17,31 +17,47 @@
                     <h2>Generate a Password</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <input
-                            type="checkbox"
-                            name="includeUpper"
-                            id="includeUpper"
-                        />
-                        <label for="includeUpper">Upper case</label><br />
-                        <input
-                            type="checkbox"
-                            name="includeLower"
-                            id="includeLower"
-                        />
-                        <label for="includeLower">Lower case</label><br />
-                        <input
-                            type="checkbox"
-                            name="includeNumeric"
-                            id="includeNumeric"
-                        />
-                        <label for="includeNumeric">Numbers</label><br />
-                        <input
-                            type="checkbox"
-                            name="includeSpecial"
-                            id="includeSpecial"
-                        />
-                        <label for="includeSpecial">Special characters</label>
+                    <label for="includeUpper">
+                        <form>
+                            <input
+                                type="checkbox"
+                                name="includeUpper"
+                                id="includeUpper"
+                            />
+                            Upper case</label
+                        ><br />
+                        <label for="includeLower"
+                            ><input
+                                type="checkbox"
+                                name="includeLower"
+                                id="includeLower"
+                            />
+                            Lower case</label
+                        ><br />
+                        <label for="includeNumeric"
+                            ><input
+                                type="checkbox"
+                                name="includeNumeric"
+                                id="includeNumeric"
+                            />
+                            Numbers</label
+                        ><br />
+                        <label for="includeSpecial"
+                            ><input
+                                type="checkbox"
+                                name="includeSpecial"
+                                id="includeSpecial"
+                            />
+                            Special characters</label
+                        ><br />
+                        <label for="passwordLength"> Password Length
+                                <input
+                                    type="text"
+                                    name="passwordLength"
+                                    id="passwordLength"
+                                    placeholder="Between 8 - 128"
+                                />
+                            </label><br />
                     </form>
                     <textarea
                         readonly
