@@ -8,8 +8,6 @@ var generateBtn = document.querySelector("#generate");
 // Make "generatePassword" function
 function generatePassword() {
     // Establish user password criteria
-
-    // WORKING HERE
     var includeUpper = document.getElementById("includeUpper").checked;
     console.log(includeUpper);
     // lowercase
@@ -30,8 +28,14 @@ function generatePassword() {
     }
 
     // Password Length: at least 8 no more than 128
+    // THIS IS WHERE WE ARE WORKING NOW
     var passwordLength = document.getElementById("passwordLength").textContent;
     console.log(passwordLength);
+
+    // do I need to run a check to see if there is anything there first--
+    // -- and then if true, check to see if it meets the requirements?
+
+    // ABOVE HERE DOESNT WORK
 
     // check to make sure user selects a valid password length
     if (passwordLength < 7 || passwordLength > 128) {
@@ -184,7 +188,7 @@ function writePassword() {
     passwordText.value = password;
 }
 
-// I want the program to listen to see if the checkboxes are ticked before running
+// Maybe I need to add an additional event listener to send the data in the password length field
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
