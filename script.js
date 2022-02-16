@@ -125,24 +125,24 @@ function generatePassword() {
         "~",
     ];
 
-    var characters = new Array();
-
+    // Populate password array with random characters
+    // Make an array to put the password in
+    var password = new Array(passwordLength);
+    
     // Generate character array based on options user selected
+    var characters = new Array();
+    
     if (includeUpper) {
         characters = alphaUpper;
-        console.log(characters);
-    }
+}
     if (includeLower) {
         characters = characters.concat(alphaLower);
-        console.log(characters);
     }
     if (includeNumeric) {
         characters = characters.concat(charNumeric);
-        console.log(characters);
     }
     if (includeSpecial) {
         characters = characters.concat(charSpecial);
-        console.log(characters);
     }
     // Check that user selected at least one valid character type
     if (!includeUpper && !includeLower && !includeNumeric && !includeSpecial) {
@@ -151,18 +151,15 @@ function generatePassword() {
         return;
     }
 
-    // Populate password array with random characters
-    // Make an array to put the password in
-    var password = new Array(passwordLength);
-
     // Need to make sure there is at least one of each type of selected character in the generated password
-
     // Randum number generation for each spot in the password
     for (i = 0; i < passwordLength; i++) {
         password[i] = characters[Math.floor(Math.random() * characters.length)];
     }
     console.log(password);
 
+
+    
     return password.join("");
 }
 
