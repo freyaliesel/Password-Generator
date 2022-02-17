@@ -31,3 +31,5 @@ Assignment is to modify the provided starter code and make an application that g
 
 
 Link to the repo is located at [github.com/freyaliesel/Password-Generator](https://github.com/freyaliesel/Password-Generator "GitHub")
+
+![Page is live on GitHub Pages](/assets/images/livepage.png)
