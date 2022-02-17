@@ -56,7 +56,7 @@ header {
 }
 
 .card form {
-  margin: 20px, 0;
+    margin: 20px, 0;
 }
 
 .card form::after {
@@ -106,12 +106,13 @@ label:nth-child(9) {
     cursor: pointer;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
     opacity: 0.8;
 }
 
 .btn:active {
-    transform: scale(.95);
+    transform: scale(0.95);
 }
 
 button[disabled] {

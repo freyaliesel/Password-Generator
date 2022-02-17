@@ -23,12 +23,14 @@ function generatePassword() {
     }
 
     // Get desired password length
-    var passwordLength = parseInt(document.getElementById("passwordLength").value);
-    
+    var passwordLength = parseInt(
+        document.getElementById("passwordLength").value
+    );
+
     // Make sure it's a number
-    if (isNaN(passwordLength)){
-        console.log('User entered a NaN')
-        return "Password must be a number."
+    if (isNaN(passwordLength)) {
+        console.log("User entered a NaN");
+        return "Password must be a number.";
     }
     console.log(`User entered: ${passwordLength} as password length.`);
 
