@@ -68,6 +68,10 @@ header {
     margin-top: 10px;
 }
 
+label:nth-child(9) {
+    padding-left: 4px;
+}
+
 .card-footer {
     text-align: center;
 }
